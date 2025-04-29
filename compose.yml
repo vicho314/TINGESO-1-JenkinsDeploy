@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   frontend:
-    image: vicho314/kartingrm-frontend:latest
+    image: 'vicho314/kartingrm-frontend:latest'
     networks:
       - front
     ports:
@@ -13,12 +13,12 @@ services:
       replicas: 3
 
   database:
-    image: postgresql
+    image: 'postgresql:alpine'
     shm_size: 128mb
     environment:
-      - POSTGRES_PASSWORD: example
-      - POSTGRES_USER: vicho314
-      - POSTGRES_DB: tingeso
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_USER=vicho314
+      - POSTGRES_DB=tingeso
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
@@ -27,19 +27,19 @@ services:
       - 5432:5432
 
   backend:
-    image: vicho314/kartingrm-backend:latest
+    image: 'vicho314/kartingrm-backend:latest'
     networks:
       - back
       - front
     ports:
       - "8090:8090"
     environment:
-      - POSTGRES_PASSWORD: example
-      - POSTGRES_DB: tingeso
-      - SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/tingeso
-      - SPRING_DATASOURCE_USERNAME: vicho314
-      - SPRING_DATASOURCE_PASSWORD: example
-      - SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=tingeso
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tingeso
+      - SPRING_DATASOURCE_USERNAME=vicho314
+      - SPRING_DATASOURCE_PASSWORD=example
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     deploy:
       restart_policy:
         condition: on-failure
