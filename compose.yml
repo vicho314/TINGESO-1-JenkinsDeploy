@@ -2,6 +2,8 @@ version: "3.8"
 services:
   frontend:
     image: vicho314/kartingrm-frontend:latest
+    depends_on:
+      - backend
     networks:
       - front
     ports:
@@ -33,10 +35,12 @@ services:
       - front
     ports:
       - "8090-8092:8090"
+    depends_on:
+      - database
     environment:
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=tingeso
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/tingeso
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/tingeso
       - SPRING_DATASOURCE_USERNAME=vicho314
       - SPRING_DATASOURCE_PASSWORD=example
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
