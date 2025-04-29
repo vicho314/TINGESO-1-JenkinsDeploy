@@ -3,7 +3,7 @@ services:
   frontend:
     image: vicho314/kartingrm-frontend:latest
     networks:
-      - frontend
+      - front
     ports:
       - "8070:80"
     deploy:
@@ -22,15 +22,15 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - backend
+      - back
     ports:
       - 5432:5432
 
   backend:
     image: vicho314/kartingrm-backend:latest
     networks:
-      - backend
-      - frontend
+      - back
+      - front
     ports:
       - "8090:8090"
     environment:
@@ -46,3 +46,8 @@ services:
       mode: replicated
       replicas: 3
 
+networks:
+  back:
+    driver: bridge
+  front:
+    driver: bridge
