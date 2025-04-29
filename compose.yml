@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   frontend:
-    image: 'vicho314/kartingrm-frontend:latest'
+    image: vicho314/kartingrm-frontend:latest
     networks:
       - front
     ports:
@@ -13,7 +13,7 @@ services:
       replicas: 3
 
   database:
-    image: 'postgresql:alpine'
+    image: postgres:alpine
     shm_size: 128mb
     environment:
       - POSTGRES_PASSWORD=example
@@ -27,7 +27,7 @@ services:
       - 5432:5432
 
   backend:
-    image: 'vicho314/kartingrm-backend:latest'
+    image: vicho314/kartingrm-backend:latest
     networks:
       - back
       - front
