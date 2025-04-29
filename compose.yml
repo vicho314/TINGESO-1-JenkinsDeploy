@@ -5,7 +5,7 @@ services:
     networks:
       - front
     ports:
-      - "8070:80"
+      - "8070-8072:80"
     deploy:
       restart_policy:
         condition: on-failure
@@ -32,7 +32,7 @@ services:
       - back
       - front
     ports:
-      - "8090:8090"
+      - "8090-8092:8090"
     environment:
       - POSTGRES_PASSWORD=example
       - POSTGRES_DB=tingeso
