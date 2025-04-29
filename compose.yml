@@ -51,3 +51,6 @@ networks:
     driver: bridge
   front:
     driver: bridge
+
+volumes:
+  pgdata:
