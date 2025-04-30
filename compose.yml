@@ -43,7 +43,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/tingeso
       - SPRING_DATASOURCE_USERNAME=vicho314
       - SPRING_DATASOURCE_PASSWORD=example
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
     deploy:
       restart_policy:
         condition: on-failure
